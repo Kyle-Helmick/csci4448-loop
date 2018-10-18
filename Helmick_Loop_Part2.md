@@ -38,4 +38,6 @@ See /ui_mockups
 
 See /class_diagrams
 
-*Floating classes / classes that confict with the writeup requirements are configuration classes (and won't have connections if I include the UML diagrams of my dependencies), what I wrote (not to configure my project) has connections in the class diagram*
+*Floating classes / classes that confict with the writeup requirements are configuration classes (and won't have connections unless I include the UML diagrams of my dependencies).*
+
+*what I wrote (not to configure my project) has connections in the class diagram.*
