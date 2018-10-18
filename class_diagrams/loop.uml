@@ -3,174 +3,140 @@
   <ID>JAVA</ID>
   <OriginalElement>io.github.kyle_helmick.loop</OriginalElement>
   <nodes>
-    <node x="1572.0" y="1380.5">io.github.kyle_helmick.loop.controllers.UserController</node>
-    <node x="-24.5" y="2774.5">io.github.kyle_helmick.loop.configs.HttpSessionConfig</node>
-    <node x="1376.0" y="1225.5">io.github.kyle_helmick.loop.respositories.UserRepository</node>
-    <node x="1473.5" y="2774.5">io.github.kyle_helmick.loop.LoopApplicationTests</node>
-    <node x="969.0" y="1369.5">io.github.kyle_helmick.loop.services.UserService</node>
-    <node x="2606.5" y="706.5">io.github.kyle_helmick.loop.models.Entity</node>
-    <node x="-34.0" y="1791.5">io.github.kyle_helmick.loop.extractors.GithubPrincipalExtractor</node>
-    <node x="2035.5" y="96.5">io.github.kyle_helmick.loop.models.Group</node>
-    <node x="2038.5" y="649.5">io.github.kyle_helmick.loop.services.GroupService</node>
-    <node x="-27.5" y="2551.5">io.github.kyle_helmick.loop.controllers.PostController</node>
-    <node x="1539.5" y="739.5">io.github.kyle_helmick.loop.models.User</node>
-    <node x="1123.0" y="2134.5">io.github.kyle_helmick.loop.controllers.SocketController</node>
-    <node x="291.0" y="1939.5">io.github.kyle_helmick.loop.models.Post</node>
-    <node x="394.5" y="1518.5">io.github.kyle_helmick.loop.configs.SsoFilter</node>
-    <node x="259.0" y="2529.5">io.github.kyle_helmick.loop.services.PostService</node>
-    <node x="863.0" y="2056.5">io.github.kyle_helmick.loop.models.Message</node>
-    <node x="1426.5" y="2023.5">io.github.kyle_helmick.loop.models.OutputMessage</node>
-    <node x="1713.0" y="2774.5">io.github.kyle_helmick.loop.controllers.MainController</node>
-    <node x="2042.5" y="391.5">io.github.kyle_helmick.loop.controllers.GroupController</node>
-    <node x="421.5" y="2763.5">io.github.kyle_helmick.loop.configs.SocketBrokerConfig</node>
-    <node x="1236.0" y="2774.5">io.github.kyle_helmick.loop.LoopApplication</node>
-    <node x="2371.5" y="545.5">io.github.kyle_helmick.loop.respositories.GroupRepository</node>
-    <node x="616.5" y="2385.5">io.github.kyle_helmick.loop.respositories.PostRepository</node>
-    <node x="838.0" y="2763.5">io.github.kyle_helmick.loop.controllers.ErrorController</node>
-    <node x="2113.0" y="1934.5">io.github.kyle_helmick.loop.configs.SocketSecurityConfig</node>
-    <node x="1730.5" y="1940.5">io.github.kyle_helmick.loop.configs.SecurityConfig</node>
+    <node x="1292.0" y="660.5">io.github.kyle_helmick.loop.controllers.UserController</node>
+    <node x="-24.5" y="2294.5">io.github.kyle_helmick.loop.configs.HttpSessionConfig</node>
+    <node x="456.0" y="505.5">io.github.kyle_helmick.loop.respositories.UserRepository</node>
+    <node x="1633.5" y="2294.5">io.github.kyle_helmick.loop.LoopApplicationTests</node>
+    <node x="49.0" y="649.5">io.github.kyle_helmick.loop.services.UserService</node>
+    <node x="1606.5" y="66.5">io.github.kyle_helmick.loop.models.Entity</node>
+    <node x="1046.0" y="1111.5">io.github.kyle_helmick.loop.extractors.GithubPrincipalExtractor</node>
+    <node x="1915.5" y="176.5">io.github.kyle_helmick.loop.models.Group</node>
+    <node x="2318.5" y="489.5">io.github.kyle_helmick.loop.services.GroupService</node>
+    <node x="532.5" y="1631.5">io.github.kyle_helmick.loop.controllers.PostController</node>
+    <node x="1259.5" y="99.5">io.github.kyle_helmick.loop.models.User</node>
+    <node x="211.0" y="1819.5">io.github.kyle_helmick.loop.models.Post</node>
+    <node x="1203.0" y="1454.5">io.github.kyle_helmick.loop.controllers.SocketController</node>
+    <node x="434.5" y="838.5">io.github.kyle_helmick.loop.configs.SsoFilter</node>
+    <node x="179.0" y="1369.5">io.github.kyle_helmick.loop.services.PostService</node>
+    <node x="943.0" y="1376.5">io.github.kyle_helmick.loop.models.Message</node>
+    <node x="1186.5" y="1663.5">io.github.kyle_helmick.loop.models.OutputMessage</node>
+    <node x="1913.0" y="2294.5">io.github.kyle_helmick.loop.controllers.MainController</node>
+    <node x="2642.5" y="511.5">io.github.kyle_helmick.loop.controllers.GroupController</node>
+    <node x="461.5" y="2323.5">io.github.kyle_helmick.loop.configs.SocketBrokerConfig</node>
+    <node x="1356.0" y="2294.5">io.github.kyle_helmick.loop.LoopApplication</node>
+    <node x="1971.5" y="545.5">io.github.kyle_helmick.loop.respositories.GroupRepository</node>
+    <node x="-23.5" y="1585.5">io.github.kyle_helmick.loop.respositories.PostRepository</node>
+    <node x="918.0" y="2323.5">io.github.kyle_helmick.loop.controllers.ErrorController</node>
+    <node x="2033.0" y="1374.5">io.github.kyle_helmick.loop.configs.SocketSecurityConfig</node>
+    <node x="1610.5" y="1380.5">io.github.kyle_helmick.loop.configs.SecurityConfig</node>
   </nodes>
   <notes />
   <edges>
     <edge source="io.github.kyle_helmick.loop.services.GroupService" target="io.github.kyle_helmick.loop.respositories.GroupRepository">
-      <point x="121.5" y="0.0" />
-      <point x="2440.0" y="720.0" />
+      <point x="-40.0" y="70.5" />
+      <point x="2400.0" y="680.0" />
+      <point x="2040.0" y="680.0" />
       <point x="0.0" y="14.5" />
     </edge>
     <edge source="io.github.kyle_helmick.loop.services.GroupService" target="io.github.kyle_helmick.loop.models.Group">
-      <point x="0.0" y="70.5" />
-      <point x="2160.0" y="840.0" />
-      <point x="2560.0" y="840.0" />
-      <point x="2560.0" y="240.0" />
+      <point x="0.0" y="-70.5" />
+      <point x="2440.0" y="320.0" />
       <point x="124.5" y="40.0" />
     </edge>
     <edge source="io.github.kyle_helmick.loop.extractors.GithubPrincipalExtractor" target="io.github.kyle_helmick.loop.services.UserService">
-      <point x="154.0" y="0.0" />
-      <point x="1080.0" y="1840.0" />
-      <point x="-40.0" y="70.5" />
+      <point x="-154.0" y="-0.0" />
+      <point x="240.0" y="1160.0" />
+      <point x="40.0" y="70.5" />
     </edge>
     <edge source="io.github.kyle_helmick.loop.configs.SsoFilter" target="io.github.kyle_helmick.loop.extractors.GithubPrincipalExtractor">
       <point x="0.0" y="81.5" />
-      <point x="640.0" y="1800.0" />
-      <point x="154.0" y="-40.0" />
+      <point x="680.0" y="1120.0" />
+      <point x="-154.0" y="-40.0" />
     </edge>
     <edge source="io.github.kyle_helmick.loop.services.UserService" target="io.github.kyle_helmick.loop.models.User">
-      <point x="-151.0" y="-40.0" />
-      <point x="920.0" y="1400.0" />
-      <point x="920.0" y="920.0" />
-      <point x="-140.5" y="0.0" />
-    </edge>
-    <edge source="io.github.kyle_helmick.loop.controllers.GroupController" target="io.github.kyle_helmick.loop.services.GroupService">
-      <point x="-117.5" y="0.0" />
-      <point x="1960.0" y="440.0" />
-      <point x="1960.0" y="680.0" />
-      <point x="-121.5" y="-40.0" />
+      <point x="-151.0" y="-0.0" />
+      <point x="0.0" y="720.0" />
+      <point x="0.0" y="280.0" />
+      <point x="-140.5" y="-0.0" />
     </edge>
     <edge source="io.github.kyle_helmick.loop.controllers.PostController" target="io.github.kyle_helmick.loop.models.Post">
-      <point x="0.0" y="-48.5" />
-      <point x="80.0" y="2120.0" />
-      <point x="-109.0" y="0.0" />
+      <point x="0.0" y="48.5" />
+      <point x="640.0" y="1960.0" />
+      <point x="109.0" y="-40.0" />
+    </edge>
+    <edge source="io.github.kyle_helmick.loop.controllers.GroupController" target="io.github.kyle_helmick.loop.services.GroupService">
+      <point x="-117.5" y="-0.0" />
+      <point x="121.5" y="-0.0" />
     </edge>
     <edge source="io.github.kyle_helmick.loop.services.PostService" target="io.github.kyle_helmick.loop.models.Post">
-      <point x="141.0" y="0.0" />
-      <point x="800.0" y="2600.0" />
-      <point x="800.0" y="2120.0" />
-      <point x="109.0" y="0.0" />
+      <point x="0.0" y="70.5" />
+      <point x="0.0" y="-180.5" />
     </edge>
     <edge source="io.github.kyle_helmick.loop.controllers.PostController" target="io.github.kyle_helmick.loop.services.PostService">
-      <point x="0.0" y="48.5" />
-      <point x="80.0" y="2720.0" />
-      <point x="400.0" y="2720.0" />
-      <point x="0.0" y="70.5" />
+      <point x="0.0" y="-48.5" />
+      <point x="640.0" y="1480.0" />
+      <point x="141.0" y="40.0" />
     </edge>
     <edge source="io.github.kyle_helmick.loop.services.UserService" target="io.github.kyle_helmick.loop.respositories.UserRepository">
-      <point x="151.0" y="-40.0" />
-      <point x="1440.0" y="1400.0" />
-      <point x="0.0" y="14.5" />
+      <point x="40.0" y="-70.5" />
+      <point x="240.0" y="520.0" />
+      <point x="-64.0" y="-0.0" />
     </edge>
     <edge source="io.github.kyle_helmick.loop.models.User" target="io.github.kyle_helmick.loop.models.Entity">
-      <point x="0.0" y="-180.5" />
-      <point x="1680.0" y="0.0" />
-      <point x="2720.0" y="0.0" />
-      <point x="0.0" y="-213.5" />
+      <point x="140.5" y="-0.0" />
+      <point x="-113.5" y="-0.0" />
     </edge>
     <edge source="io.github.kyle_helmick.loop.respositories.PostRepository" target="io.github.kyle_helmick.loop.models.Post">
-      <point x="0.0" y="-14.5" />
-      <point x="680.0" y="2160.0" />
-      <point x="109.0" y="40.0" />
+      <point x="0.0" y="14.5" />
+      <point x="40.0" y="2000.0" />
+      <point x="-109.0" y="-0.0" />
     </edge>
     <edge source="io.github.kyle_helmick.loop.controllers.UserController" target="io.github.kyle_helmick.loop.services.UserService">
-      <point x="-108.0" y="0.0" />
-      <point x="151.0" y="0.0" />
+      <point x="0.0" y="59.5" />
+      <point x="1400.0" y="1280.0" />
+      <point x="200.0" y="1280.0" />
+      <point x="0.0" y="70.5" />
+    </edge>
+    <edge source="io.github.kyle_helmick.loop.controllers.SocketController" target="io.github.kyle_helmick.loop.models.Message">
+      <point x="-117.0" y="-0.0" />
+      <point x="97.0" y="-0.0" />
     </edge>
     <edge source="io.github.kyle_helmick.loop.controllers.UserController" target="io.github.kyle_helmick.loop.models.User">
       <point x="0.0" y="-59.5" />
       <point x="0.0" y="180.5" />
     </edge>
-    <edge source="io.github.kyle_helmick.loop.controllers.SocketController" target="io.github.kyle_helmick.loop.models.Message">
-      <point x="-117.0" y="0.0" />
-      <point x="97.0" y="0.0" />
-    </edge>
     <edge source="io.github.kyle_helmick.loop.services.PostService" target="io.github.kyle_helmick.loop.respositories.PostRepository">
-      <point x="141.0" y="-40.0" />
-      <point x="680.0" y="2560.0" />
-      <point x="0.0" y="14.5" />
+      <point x="-141.0" y="-0.0" />
+      <point x="40.0" y="1440.0" />
+      <point x="0.0" y="-14.5" />
     </edge>
     <edge source="io.github.kyle_helmick.loop.respositories.UserRepository" target="io.github.kyle_helmick.loop.models.User">
-      <point x="0.0" y="-14.5" />
-      <point x="1440.0" y="1000.0" />
-      <point x="-140.5" y="80.0" />
-    </edge>
-    <edge source="io.github.kyle_helmick.loop.controllers.SocketController" target="io.github.kyle_helmick.loop.models.OutputMessage">
-      <point x="117.0" y="0.0" />
-      <point x="-133.5" y="0.0" />
+      <point x="64.0" y="-0.0" />
+      <point x="1360.0" y="520.0" />
+      <point x="-40.0" y="180.5" />
     </edge>
     <edge source="io.github.kyle_helmick.loop.controllers.GroupController" target="io.github.kyle_helmick.loop.models.Group">
       <point x="0.0" y="-48.5" />
-      <point x="0.0" y="103.5" />
+      <point x="2760.0" y="300.0" />
+      <point x="124.5" y="20.0" />
+    </edge>
+    <edge source="io.github.kyle_helmick.loop.controllers.SocketController" target="io.github.kyle_helmick.loop.models.OutputMessage">
+      <point x="117.0" y="-0.0" />
+      <point x="1520.0" y="1480.0" />
+      <point x="1520.0" y="1800.0" />
+      <point x="133.5" y="-0.0" />
     </edge>
     <edge source="io.github.kyle_helmick.loop.respositories.GroupRepository" target="io.github.kyle_helmick.loop.models.Group">
       <point x="0.0" y="-14.5" />
-      <point x="2440.0" y="280.0" />
-      <point x="124.5" y="80.0" />
+      <point x="0.0" y="103.5" />
     </edge>
     <edge source="io.github.kyle_helmick.loop.models.Group" target="io.github.kyle_helmick.loop.models.Entity">
-      <point x="0.0" y="-103.5" />
-      <point x="2160.0" y="40.0" />
-      <point x="1880.0" y="40.0" />
-      <point x="1880.0" y="880.0" />
-      <point x="-113.5" y="-40.0" />
+      <point x="-124.5" y="-0.0" />
+      <point x="113.5" y="-0.0" />
     </edge>
   </edges>
-  <settings layout="Hierarchic Group" zoom="1.2000000000000002" x="432.2499999999999" y="2610.25" />
-  <SelectedNodes>
-    <node>io.github.kyle_helmick.loop.controllers.UserController</node>
-    <node>io.github.kyle_helmick.loop.configs.HttpSessionConfig</node>
-    <node>io.github.kyle_helmick.loop.respositories.UserRepository</node>
-    <node>io.github.kyle_helmick.loop.LoopApplicationTests</node>
-    <node>io.github.kyle_helmick.loop.services.UserService</node>
-    <node>io.github.kyle_helmick.loop.models.Entity</node>
-    <node>io.github.kyle_helmick.loop.extractors.GithubPrincipalExtractor</node>
-    <node>io.github.kyle_helmick.loop.models.Group</node>
-    <node>io.github.kyle_helmick.loop.services.GroupService</node>
-    <node>io.github.kyle_helmick.loop.controllers.PostController</node>
-    <node>io.github.kyle_helmick.loop.models.User</node>
-    <node>io.github.kyle_helmick.loop.controllers.SocketController</node>
-    <node>io.github.kyle_helmick.loop.models.Post</node>
-    <node>io.github.kyle_helmick.loop.configs.SsoFilter</node>
-    <node>io.github.kyle_helmick.loop.services.PostService</node>
-    <node>io.github.kyle_helmick.loop.models.Message</node>
-    <node>io.github.kyle_helmick.loop.models.OutputMessage</node>
-    <node>io.github.kyle_helmick.loop.controllers.MainController</node>
-    <node>io.github.kyle_helmick.loop.controllers.GroupController</node>
-    <node>io.github.kyle_helmick.loop.configs.SocketBrokerConfig</node>
-    <node>io.github.kyle_helmick.loop.LoopApplication</node>
-    <node>io.github.kyle_helmick.loop.respositories.GroupRepository</node>
-    <node>io.github.kyle_helmick.loop.respositories.PostRepository</node>
-    <node>io.github.kyle_helmick.loop.controllers.ErrorController</node>
-    <node>io.github.kyle_helmick.loop.configs.SocketSecurityConfig</node>
-    <node>io.github.kyle_helmick.loop.configs.SecurityConfig</node>
-  </SelectedNodes>
+  <settings layout="Hierarchic Group" zoom="0.30000000000000004" x="1912.1666666666702" y="1420.6666666666665" />
+  <SelectedNodes />
   <Categories>
     <Category>Fields</Category>
     <Category>Constructors</Category>
