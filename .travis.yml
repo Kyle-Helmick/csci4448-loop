@@ -1,0 +1,12 @@
+before_install:
+- chmod +x mvnw
+
+services:
+  - mongodb
+
+before_script:
+  - sleep 10
+
+language: java
+sudo: true
+script: mvn clean verify

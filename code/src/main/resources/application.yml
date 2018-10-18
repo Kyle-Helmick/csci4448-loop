@@ -1,0 +1,24 @@
+github:
+  client:
+    clientId: ${github_client_clientId}
+    clientSecret: ${github_client_clientSecret}
+    accessTokenUri: https://github.com/login/oauth/access_token
+    userAuthorizationUri: https://github.com/login/oauth/authorize
+    clientAuthenticationScheme: form
+  resource:
+    userInfoUri: https://api.github.com/user
+
+spring:
+  data:
+    mongodb:
+      database: loop
+      host: localhost
+      port: 27017
+  mustache:
+    prefix: classpath:/templates/
+    suffix: .mustache
+
+server:
+  error:
+    whitelabel:
+      enabled: false
