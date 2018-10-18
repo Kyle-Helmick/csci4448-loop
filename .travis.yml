@@ -1,4 +1,5 @@
 before_install:
+- cd code
 - chmod +x mvnw
 
 services:
