@@ -8,7 +8,7 @@ import org.springframework.data.mongodb.core.index.Indexed;
 import java.util.ArrayList;
 import java.util.Date;
 
-public class Entity {
+public abstract class Entity {
 
   @Id
   private final String id;
@@ -24,6 +24,11 @@ public class Entity {
   private String handle;
   private ArrayList<String> postIds;
 
+  /**
+   * Default constructor for Entity where bio isn't known or doesn't need to be set yet.
+   * @param id will be the id key in the database (a github oauth node_id or a UUID for groups)
+   * @param handle is the desired handle for the entity object
+   */
   public Entity(String id, String handle) {
     this.id = id;
     this.handle = handle;
@@ -33,9 +38,14 @@ public class Entity {
     this.bio = "";
   }
 
+  /**
+   * Constructor to support initializing entity with bio.
+   * @param id will be the id key in the database (a github oauth node_id or a UUID for groups)
+   * @param handle is the desired handle for the entity object
+   * @param bio is the desired bio for the entity object
+   */
   public Entity(String id, String handle, String bio) {
     this(id, handle);
-
     this.bio = bio;
   }
 

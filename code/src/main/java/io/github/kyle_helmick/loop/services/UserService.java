@@ -17,13 +17,17 @@ public class UserService {
     this.repository = repository;
   }
 
+  /**
+   * This method takes the map of attributes returned from a successful OAuth authentication.
+   * @param map the map of attributes that make the Github OAuth object
+   */
   public void registerNewUser(Map<String, Object> map) {
-    String nodeId = (String) map.getOrDefault("node_id", "");
+    String nodeId = map.get("node_id") == null ? "" : (String) map.get("node_id");
     if (!repository.findById(nodeId).isPresent()) {
-      String handle = (String) map.getOrDefault("login", "");
-      String location = (String) map.getOrDefault("location", "");
-      String profilePicture = (String) map.getOrDefault("avatar_url", "");
-      String bio = (String) map.getOrDefault("bio", "");
+      String handle = map.get("login") == null ? "" : (String) map.get("login");
+      String location = map.get("location") == null ? "" : (String) map.get("location");
+      String profilePicture = map.get("avatar_url") == null ? "" : (String) map.get("avatar_url");
+      String bio = map.get("bio") == null ? "" : (String) map.get("bio");
       saveUser(new User(nodeId, handle, location, profilePicture, bio));
     }
   }

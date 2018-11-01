@@ -26,6 +26,11 @@ public class SsoFilter {
     this.principalExtractor = principalExtractor;
   }
 
+  /**
+   * This bean defines the Filter to force github OAuth authentication
+   * @param oauth2ClientContext the context coming from OAuth
+   * @return a Filter designed to utilize the context provided by OAuth
+   */
   @Bean(name = "githubFilter")
   public Filter ssoFilter(OAuth2ClientContext oauth2ClientContext) {
     OAuth2ClientAuthenticationProcessingFilter githubFilter = new OAuth2ClientAuthenticationProcessingFilter("/login/github");
@@ -38,9 +43,14 @@ public class SsoFilter {
     return githubFilter;
   }
 
+  /**
+   * This registers our OAuth filter with Springs routing workflow.
+   * @param filter the filter that we want to register
+   * @return a FilterRegistrationBean that has the filter and order configured
+   */
   @Bean
   public FilterRegistrationBean oauth2ClientFilterRegistration(
-    OAuth2ClientContextFilter filter) {
+      OAuth2ClientContextFilter filter) {
     FilterRegistrationBean registration = new FilterRegistrationBean();
     registration.setFilter(filter);
     registration.setOrder(-100);

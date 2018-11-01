@@ -1,0 +1,19 @@
+$theme-colors: (
+  "light": #D2EEF2,
+  "secondary": #7FB7BE,
+  "primary": #2FAEBF,
+  "info": #6C8184,
+  "dark": #424445,
+);
+
+html, body {
+  margin: 0;
+  height: 100%;
+  background-color: map-get($theme-colors, info) !important;
+}
+
+.loop-logo {
+  fill: map-get($theme-colors, primary) !important;
+}
+
+@import "bootstrap/bootstrap";

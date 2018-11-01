@@ -22,7 +22,7 @@ function connect() {
     stompClient = Stomp.over(socket);
     stompClient.connect(headers, function (frame) {
         setConnected(true);
-        console.log('Connected: ' + frame);
+        //console.log('Connected: ' + frame);
         stompClient.subscribe('/secured/messages', function (response) {
             showGreeting(response);
         });

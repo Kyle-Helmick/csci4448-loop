@@ -8,6 +8,14 @@ public class OutputMessage {
 
   public OutputMessage() {}
 
+  /**
+   * THIS IS ALL TEMPORARY STUFF.
+   * TODO: Refactor Message into alerts and actions for user
+   * This is the constructor to make an output message.
+   * @param from the string to say who it'sfrom
+   * @param text the content for the message
+   * @param date the date associated with the message
+   */
   public OutputMessage(String from, String text, String date) {
     this.from = from;
     this.text = text;

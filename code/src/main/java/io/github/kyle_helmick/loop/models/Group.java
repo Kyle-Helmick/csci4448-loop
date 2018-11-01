@@ -25,6 +25,11 @@ public class Group extends Entity {
   private ArrayList<String> memberIds;
   private String ownerId;
 
+  /**
+   * This method is the default constructor to make a Group object.
+   * @param handle is the desired handle for the group
+   * @param ownerId is the id attribute of the User object that is the owner/creator of the group
+   */
   public Group(String handle, String ownerId) {
     super(UUID.randomUUID().toString(), handle);
 

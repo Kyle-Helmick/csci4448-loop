@@ -17,22 +17,23 @@ import javax.servlet.Filter;
 //@EnableWebSecurity
 public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
-  private final OAuth2ClientContext oauth2ClientContext;
-
   private final Filter ssoFilter;
 
   @Autowired
-  public SecurityConfig(OAuth2ClientContext oauth2ClientContext, @Qualifier("githubFilter") Filter ssoFilter) {
-    this.oauth2ClientContext = oauth2ClientContext;
+  public SecurityConfig(@Qualifier("githubFilter") Filter ssoFilter) {
     this.ssoFilter = ssoFilter;
   }
 
   @Override
   protected void configure(HttpSecurity http) throws Exception {
     http
-      .antMatcher("/**").authorizeRequests()
-      .antMatchers("/", "/login**", "/webjars/**", "/error**", "/css/**", "/js/**", "/images/**").permitAll()
-      .anyRequest().authenticated()
+      .authorizeRequests()
+      .antMatchers("/", "/login**",
+                   "/webjars/**", "/error**",
+                   "/css/**", "/js/**",
+                   "/images/**", "/favicon.ico")
+      .permitAll().anyRequest().authenticated()
+      .and().headers().frameOptions().sameOrigin()
       .and().logout().logoutSuccessUrl("/").permitAll()
       .and().csrf().csrfTokenRepository(CookieCsrfTokenRepository.withHttpOnlyFalse())
       .and().addFilterBefore(ssoFilter, BasicAuthenticationFilter.class);

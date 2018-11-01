@@ -14,5 +14,4 @@ public class SocketSecurityConfig extends AbstractSecurityWebSocketMessageBroker
       .anyMessage().authenticated();
   }
 
-
 }

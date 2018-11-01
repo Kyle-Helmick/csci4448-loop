@@ -26,6 +26,12 @@ public class Post {
   private final String ownerId;
   private final String groupId;
 
+  /**
+   * This is the constructor to make a Post.
+   * @param content is the content of the post
+   * @param ownerId is the id of the User object that is the owner of the post.
+   * @param groupId is the id (if needed) for the associated group to the post.
+   */
   public Post(String content, String ownerId, String groupId) {
     this.id = UUID.randomUUID().toString();
     this.content = content;

@@ -14,6 +14,11 @@ import java.util.Map;
 @Controller
 public class ErrorController implements org.springframework.boot.web.servlet.error.ErrorController {
 
+  /**
+   * This route handles visible errors.
+   * @param request the request causing the error
+   * @return a model and view that fills out the error template
+   */
   @RequestMapping("/error")
   public ModelAndView handleError(HttpServletRequest request) {
 
