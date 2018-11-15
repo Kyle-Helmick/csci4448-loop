@@ -24,7 +24,9 @@ public class ErrorController implements org.springframework.boot.web.servlet.err
 
     Object status = request.getAttribute(RequestDispatcher.ERROR_STATUS_CODE);
 
-    Map<String, Object> model = new HashMap<>();
+    Map<String, Object> view = new HashMap<>();
+
+    view.put("pageTitle", "Error");
 
     if (status != null) {
       int statusCode = Integer.parseInt(status.toString());
@@ -32,18 +34,19 @@ public class ErrorController implements org.springframework.boot.web.servlet.err
 
       switch (code) {
         case NOT_FOUND:
-          model.put("error", "Page misplaced, please don't try again.");
+          view.put("error", "Page misplaced, please don't try again.");
           break;
         case FORBIDDEN:
-          model.put("error", "I'm sorry, Dave. I'm afraid I can't do that.");
+          view.put("error", "I'm sorry, Dave. I'm afraid I can't do that.");
           break;
         default:
-          model.put("error", "Error not supported? Monkeys?");
+          System.out.println(code);
+          view.put("error", "Error not supported? Monkeys?");
           break;
       }
     }
 
-    return new ModelAndView("errorPage", model);
+    return new ModelAndView("errorPage", view);
   }
 
   @Override

@@ -7,20 +7,6 @@ import java.util.ArrayList;
 @Document(collection = "users")
 public class User extends Entity {
 
-  //  @Id
-  //  private final String id;
-  //
-  //  @Indexed
-  //  @CreatedDate
-  //  private final Date dateCreated;
-  //
-  //  @LastModifiedDate
-  //  private Date dateModified;
-  //
-  //  private String bio;
-  //  private String handle;
-  //  private ArrayList<String> postIds;
-
   private String location;
   private String profilePicture;
   private ArrayList<String> followers;

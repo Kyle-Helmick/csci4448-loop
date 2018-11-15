@@ -3,14 +3,10 @@ package io.github.kyle_helmick.loop.controllers;
 import io.github.kyle_helmick.loop.models.User;
 import io.github.kyle_helmick.loop.services.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.session.data.mongo.MongoSession;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
-import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
-import javax.servlet.http.HttpServletRequest;
 import java.security.Principal;
 import java.util.HashMap;
 import java.util.Map;
@@ -28,31 +24,53 @@ public class MainController {
   }
 
   @RequestMapping("/")
-  public String index(Model model) {
-    return "index.html";
+  public ModelAndView index() {
+
+    Map<String, Object> view = new HashMap<>();
+    view.put("pageTitle", "Login");
+
+    return new ModelAndView("index", view);
   }
 
-  /**
-   * Apples.
-   * @param principal apples
-   * @return apples
-   */
   @RequestMapping("/profile")
   public ModelAndView profile(Principal principal) {
 
-    Map<String, Object> model = new HashMap<>();
+    Map<String, Object> view = mapUser(principal);
+
+    view.put("pageTitle", "profile");
+
+    return new ModelAndView("profile", view);
+  }
+
+  @RequestMapping("/feed")
+  public ModelAndView feed(Principal principal) {
+
+    Map<String, Object> view = mapUser(principal);
+
+    view.put("pageTitle", "Feed");
+
+    return new ModelAndView("feed", view);
+  }
+
+  private Map<String, Object> mapUser(Principal principal) {
+
+    Map<String, Object> userView = new HashMap<>();
 
     Pattern pattern = Pattern.compile("node_id=(.*?)[,]");
     Matcher m = pattern.matcher(principal.getName());
 
     if (m.find()) {
       User user = userService.getUser(m.group(1));
-      model.put("handle", user.getHandle());
-      model.put("profilePicture", user.getProfilePicture());
-      model.put("location", user.getLocation());
-      model.put("bio", user.getBio());
+      userView.put("handle", user.getHandle());
+      userView.put("profilePicture", user.getProfilePicture());
+      userView.put("location", user.getLocation());
+      userView.put("bio", user.getBio());
+      userView.put("followers", user.getFollowers().size());
+      userView.put("following", user.getFollowing().size());
+      userView.put("posts", user.getPostIds().size());
     }
 
-    return new ModelAndView("profile", model);
+    return userView;
   }
+
 }

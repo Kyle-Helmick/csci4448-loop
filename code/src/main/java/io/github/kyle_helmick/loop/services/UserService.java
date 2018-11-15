@@ -5,7 +5,11 @@ import io.github.kyle_helmick.loop.respositories.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.security.Principal;
+import java.util.HashMap;
 import java.util.Map;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 @Service
 public class UserService {
@@ -36,8 +40,33 @@ public class UserService {
     return repository.findById(nodeId).orElse(null);
   }
 
+  public User getUser(Principal principal) {
+    return getUser((String) mapUser(principal).get("nodeId"));
+  }
+
   public void saveUser(User user) {
     repository.save(user);
   }
 
+  public Map<String, Object> mapUser(Principal principal) {
+
+    Map<String, Object> userMap = new HashMap<>();
+
+    Pattern pattern = Pattern.compile("node_id=(.*?)[,]");
+    Matcher m = pattern.matcher(principal.getName());
+
+    if (m.find()) {
+      User user = this.getUser(m.group(1));
+      userMap.put("nodeId", user.getId());
+      userMap.put("handle", user.getHandle());
+      userMap.put("profilePicture", user.getProfilePicture());
+      userMap.put("location", user.getLocation());
+      userMap.put("bio", user.getBio());
+      userMap.put("followers", user.getFollowers().size());
+      userMap.put("following", user.getFollowing().size());
+      userMap.put("posts", user.getPostIds().size());
+    }
+
+    return userMap;
+  }
 }

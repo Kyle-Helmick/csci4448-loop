@@ -8,20 +8,6 @@ import java.util.UUID;
 @Document(collection = "groups")
 public class Group extends Entity {
 
-  //  @Id
-  //  private final String id;
-  //
-  //  @Indexed
-  //  @CreatedDate
-  //  private final Date dateCreated;
-  //
-  //  @LastModifiedDate
-  //  private Date dateModified;
-  //
-  //  private String bio;
-  //  private String handle;
-  //  private ArrayList<String> postIds;
-
   private ArrayList<String> memberIds;
   private String ownerId;
 

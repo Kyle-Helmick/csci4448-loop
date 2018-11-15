@@ -1,0 +1,100 @@
+<html>
+    {{>inserts/head}}
+    <body>
+        <div class="d-flex flex-column">
+            {{>inserts/navbar}}
+            <div class="d-flex flex-row flex-fill align-content-center justify-content-center" style="padding-top: 5vh; padding-bottom: 5vh">
+
+
+                <!-- This is the left one -->
+                <div class="bg-light d-flex flex-column" style="width: 15vw; border-radius: .25rem; box-shadow: 0 15px 15px rgba(0,0,0,.25); padding: 2vh">
+                    <img src="{{profilePicture}}" style="height: 7vw; width: 7vw; border-radius: .25rem"/>
+                    <h3 style="margin-top: 1.5vh">@{{handle}}</h3>
+                    {{#location}}<h4 style="margin-top: 1.5vh">{{location}}</h4>{{/location}}
+                    <div class="d-flex flex-row" style="margin-top: 1.5vh">
+                        <div>
+                            <p style="margin: 0 1vw 0 0;">Posts</p>
+                            <p style="margin: 0 0 0 0;">{{posts}}</p>
+                        </div>
+                        <div>
+                            <p style="margin: 0 1vw 0 0;">Following</p>
+                            <p style="margin: 0 0 0 0;">{{following}}</p>
+                        </div>
+                        <div>
+                            <p style="margin: 0 0 0 0;">Followers</p>
+                            <p style="margin: 0 0 0 0;">{{followers}}</p>
+                        </div>
+                    </div>
+                    {{#bio}}<p style="margin-top: 1.5vh">{{bio}}</p>{{/bio}}
+                </div>
+
+
+                <!-- This is the middle one -->
+                <div class="bg-light d-flex flex-column" style="width: 45vw; border-radius: .25rem; box-shadow: 0 15px 15px rgba(0,0,0,.25); padding: 5vh; margin-left: 1vw; margin-right: 1vw">
+                    <div class="w-100">
+                        <textarea class="form-control" id="postArea" title="postArea" rows="3" style="margin-bottom: 1vh;"></textarea>
+                        <button id="postPost" class="btn btn-primary float-right">Post</button>
+                    </div>
+                    <div id="postContainer">
+                    </div>
+                </div>
+
+
+                <!-- This is the right one -->
+                <div class="bg-light d-flex" style="width: 15vw; border-radius: .25rem; box-shadow: 0 15px 15px rgba(0,0,0,.25); padding: 2vh">
+                </div>
+            </div>
+        </div>
+    </body>
+    <script>
+        $(document).ready(function() {
+
+            getPosts();
+
+            $("#postPost").click(function () {
+
+                let data = $("#postArea").val();
+
+                $.ajax({
+                    type: "POST",
+                    url: "/api/posts/new",
+                    contentType: "application/json; charset=utf-8",
+                    dataType: "json",
+                    data: "{\"post\": \"" + data + "\"}"
+                });
+
+                getPosts();
+            });
+        });
+
+        function getPosts() {
+            $.ajax({
+                type: "GET",
+                url: "/api/posts/feed",
+                contentType: "application/json; charset=utf-8",
+                dataType: "json"
+            }).done(function(data) {
+                renderPosts(data)
+            });
+        }
+
+        function renderPosts(data) {
+            $("#postContainer").empty();
+            console.log("renderingPosts");
+            console.log(data);
+            for (let index in data) {
+                $("#postContainer").append(
+                    "<div>\n" +
+                    "  <div class=\"d-flex w-100 align-content-center justify-content-between\">\n" +
+                    "    <h4>@" + data[index]['user'].replace(/</g, "&lt;").replace(/>/g, "&gt;") + "</h4>\n" +
+                    "    <h5 style=\"margin: 0;\">" + new Date(data[index]['postTime']).toLocaleString() + "</h5>\n" +
+                    "  </div>\n" +
+                    "  <div class=\"d-flex w-100 rounded border border-secondary p-2\" style=\"background-color: white; min-height: 3rem;\">\n" +
+                    "    <text>" + data[index]['content'].replace(/</g, "&lt;").replace(/>/g, "&gt;") + "</text>\n" +
+                    "  </div>\n" +
+                    "</div>"
+                );
+            }
+        }
+    </script>
+</html>
