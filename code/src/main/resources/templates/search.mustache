@@ -1,0 +1,82 @@
+<html lang="en">
+{{>inserts/head}}
+<body>
+<div class="d-flex flex-column align-content-center justify-content-center">
+    {{>inserts/navbar}}
+    <div class="d-flex flex-column align-content-center justify-content-center" style="padding-top: 5vh; padding-bottom: 5vh">
+
+
+        <!-- This is the middle one -->
+        <div id="searchBar" class="bg-light flex-column align-self-center justify-content-center" style="width: 45vw; border-radius: .25rem; box-shadow: 0 15px 15px rgba(0,0,0,.25); padding: 5vh;">
+            <h1 class="align-middle text-center">Find stuff</h1>
+            <form class="form-inline align-content-center justify-content-center" style="margin: 0">
+                <label class="sr-only" for="inlineFormInputName2">Query</label>
+                <input type="text" class="form-control mb-2 mr-sm-2" id="searchBox" placeholder="Query">
+                <button class="btn btn-primary mb-2" onclick="search()">Submit</button>
+            </form>
+            <div id="users">
+
+            </div>
+            <div id="posts">
+
+            </div>
+        </div>
+
+
+    </div>
+</div>
+</body>
+<script>
+    function search() {
+
+        event.preventDefault();
+
+        let queryText = $("#searchBox").val();
+        queryText = queryText.trim();
+
+        if (queryText === "") {
+            return;
+        }
+        let data = {"query": queryText};
+
+        $.ajax({
+            type: "POST",
+            url: "/api/search",
+            contentType: "application/json; charset=utf-8",
+            dataType: "json",
+            data: JSON.stringify(data)
+        })
+        .done(function(data) {
+            let container = $("#posts");
+            container.empty();
+            console.log(data);
+            for (let index in data['data']['users']) {
+                console.log(data['data']['users'][index]);
+                container.append(
+                "<div class=\"post\">\n" +
+                "  <div class=\"d-flex w-100 align-content-center\">\n" +
+                "    <img src=\"" + data['data']['users'][index]['profilePicture'] + "\" style=\"height: 38px; width: 38px; margin-right: 10px; background-color: white; border-radius: .25rem\"/>" +
+                "    <a class=\"deco-none\" href=\"/user/" + data['data']['users'][index]['nodeId'] + "\"><h4>@" + data['data']['users'][index]['handle'].replace(/</g, "&lt;").replace(/>/g, "&gt;") + "</h4></a>\n" +
+                "  </div>" +
+                "</div>"
+                );
+            }
+            for (let index in data['data']['posts']) {
+                container.append(
+                        "<div class=\"post\">\n" +
+                        "  <div class=\"d-flex w-100 align-content-center justify-content-between\">\n" +
+                        "    <a class=\"deco-none\" href=\"/user/" + data['data']['posts'][index]['userId'] + "\"><h4>@" + data['data']['posts'][index]['handle'].replace(/</g, "&lt;").replace(/>/g, "&gt;") + "</h4></a>\n" +
+                        "    <p style=\"margin: 0;\">" + new Date(data['data']['posts'][index]['date']).toLocaleString() + "</p>\n" +
+                        "  </div>\n" +
+                        "  <div class=\"d-flex w-100 rounded border border-secondary p-2\" style=\"background-color: white; min-height: 3rem;\">\n" +
+                        "    <text>" + data['data']['posts'][index]['content'].replace(/</g, "&lt;").replace(/>/g, "&gt;") + "</text>\n" +
+                        "  </div>\n" +
+                        "</div>"
+                );
+            }
+        });
+
+
+    }
+</script>
+</html>

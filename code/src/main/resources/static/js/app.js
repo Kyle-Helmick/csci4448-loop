@@ -1,12 +1,10 @@
-var logout = function() {
-    disconnect();
+function logout() {
     $.post("/logout", function() {
         window.location.replace("/");
     });
-    return true;
-};
+}
 
-var updateUser = function() {
+function updateUser() {
     let formData = {
         'handle': $('#FormInputGroupHandle').val(),
         'profilePicture': $('#FormInputGroupProfilePicture').val(),
@@ -20,39 +18,33 @@ var updateUser = function() {
         data: formData,
         dataType: 'json',
         encode: true
-    }).done(function() {
-        location.reload();
-    });
+    }).done(setTimeout(function(data) {
+        console.log(data);
+        event.preventDefault();
+        window.location.reload();
+    }), 1000);
 
     event.preventDefault();
-    location.reload();
-};
+    window.location.reload();
+}
 
 $(document).ready(function() {
     $.ajax("/authenticate", {
         type: "GET",
-        statusCode: {
-            200: function () {
-                connect();
-            },
-            403: function () {
-                console.log("403 on /authenticate")
-            }
-        }
-    });
+    }).done(function(data) {
+        console.log(data);
+    })
 });
 
 $.ajaxSetup({
     beforeSend : function(xhr, settings) {
-        if (settings.type == 'POST' || settings.type == 'PUT'
-            || settings.type == 'DELETE' || settings.type == 'GET') {
+        if (settings.type === 'POST' || settings.type === 'PUT'
+            || settings.type === 'DELETE' || settings.type === 'GET') {
             if (!(/^http:.*/.test(settings.url) || /^https:.*/
                 .test(settings.url))) {
-                // Only send the token to relative URLs i.e. locally.
                 xhr.setRequestHeader("X-XSRF-TOKEN",
                     Cookies.get('XSRF-TOKEN'));
             }
         }
-
     }
 });

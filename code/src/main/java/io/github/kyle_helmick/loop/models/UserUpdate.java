@@ -27,7 +27,10 @@ public class UserUpdate {
    * @param location is the possible new location
    * @param bio is the possibly new bio
    */
-  public UserUpdate(@NotBlank @Size(min = 4, max = 24, message = "Handle must be between 4 and 24 characters") String handle,
+  public UserUpdate(@NotBlank @Size(min = 4,
+                                    max = 24,
+                                    message = "Handle must be between 4 and 24 characters")
+                    String handle,
                     @NotBlank @URL String profilePicture,
                     String location,
                     @Size(max = 500, message = "Bio can be up to 500 characters") String bio) {

@@ -1,0 +1,99 @@
+<html lang="en">
+    {{>inserts/head}}
+    <body>
+        <div class="d-flex flex-column">
+            {{>inserts/navbar}}
+            <div class="d-flex flex-row align-content-center justify-content-center" style="padding-top: 5vh; padding-bottom: 5vh">
+
+
+                <!-- This is the left one -->
+                <div class="bg-light align-self-start" style="width: 15vw; border-radius: .25rem; box-shadow: 0 15px 15px rgba(0,0,0,.25); padding: 2vh">
+                    <img src="{{pageUser.profilePicture}}" style="height: 7vw; width: 7vw; border-radius: .25rem"/>
+                    <h3 style="margin-top: 1.5vh">@{{pageUser.handle}}</h3>
+                    {{#pageUser.location}}<h4 style="margin-top: 1.5vh">{{pageUser.location}}</h4>{{/pageUser.location}}
+                    <div class="d-flex flex-row" style="margin-top: 1.5vh">
+                        <div>
+                            <p style="margin: 0 1vw 0 0;">Posts</p>
+                            <p style="margin: 0 0 0 0;">{{pageUser.posts}}</p>
+                        </div>
+                        <div>
+                            <p style="margin: 0 1vw 0 0;">Following</p>
+                            <p style="margin: 0 0 0 0;">{{pageUser.following}}</p>
+                        </div>
+                        <div>
+                            <p style="margin: 0 0 0 0;">Followers</p>
+                            <p style="margin: 0 0 0 0;">{{pageUser.followers}}</p>
+                        </div>
+                    </div>
+                    {{#pageUser.bio}}<p style="margin-top: 1.5vh">{{pageUser.bio}}</p>{{/pageUser.bio}}
+                    {{^isSelf}}
+                        {{#alreadyFollowing}}
+                            <button class="btn btn-primary" onclick="changeFollow()">Unfollow</button>
+                        {{/alreadyFollowing}}
+                        {{^alreadyFollowing}}
+                            <button class="btn btn-primary" onclick="changeFollow()">Follow</button>
+                        {{/alreadyFollowing}}
+                    {{/isSelf}}
+                </div>
+
+
+                <!-- This is the middle one -->
+                <div class="bg-light align-self-start flex-column d-flex" style="width: 45vw; border-radius: .25rem; box-shadow: 0 15px 15px rgba(0,0,0,.25); padding: 5vh; margin-left: 1vw; margin-right: 16vw">
+                    <div id="postContainer">
+                    </div>
+                </div>
+
+
+            </div>
+        </div>
+    </body>
+    <script>
+        $(document).ready(function() {
+            getPosts();
+        });
+
+        function getPosts() {
+            $.ajax({
+                type: "GET",
+                url: "/api/posts/user/{{pageUser.nodeId}}",
+                contentType: "application/json; charset=utf-8",
+                dataType: "json"
+            }).done(function(data) {
+                appendPosts(data);
+            });
+        }
+
+        {{^isSelf}}
+        function changeFollow() {
+            $.ajax({
+                type: "GET",
+                url: "/api/user/follow/{{pageUser.nodeId}}",
+                contentType: "application/json; charset=utf-8",
+                dataType: "json"
+            }).done(function(data) {
+                console.log(data);
+                window.location.reload();
+            });
+        }
+        {{/isSelf}}
+
+        function appendPosts(data) {
+            let container = $("#postContainer");
+            container.empty();
+            console.log(data);
+            for (let index in data['data']) {
+                container.append(
+                        "<div class=\"post\">\n" +
+                        "  <div class=\"d-flex w-100 align-content-center justify-content-between\">\n" +
+                        "    <a class=\"deco-none\" href=\"/user/" + data['data'][index]['userId'] + "\"><h4>@" + data['data'][index]['user'].replace(/</g, "&lt;").replace(/>/g, "&gt;") + "</h4></a>\n" +
+                        "    <p style=\"margin: 0;\">" + new Date(data['data'][index]['postTime']).toLocaleString() + "</p>\n" +
+                        "  </div>\n" +
+                        "  <div class=\"d-flex w-100 rounded border border-secondary p-2\" style=\"background-color: white; min-height: 3rem;\">\n" +
+                        "    <text>" + data['data'][index]['content'].replace(/</g, "&lt;").replace(/>/g, "&gt;") + "</text>\n" +
+                        "  </div>\n" +
+                        "</div>"
+                );
+            }
+        }
+    </script>
+</html>

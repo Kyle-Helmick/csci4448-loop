@@ -13,7 +13,6 @@ import javax.servlet.Filter;
 
 @Configuration
 @EnableOAuth2Client
-//@EnableWebSecurity
 public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
   private final Filter ssoFilter;

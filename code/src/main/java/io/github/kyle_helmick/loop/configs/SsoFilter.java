@@ -27,16 +27,18 @@ public class SsoFilter {
   }
 
   /**
-   * This bean defines the Filter to force github OAuth authentication
+   * This bean defines the Filter to force github OAuth authentication.
    * @param oauth2ClientContext the context coming from OAuth
    * @return a Filter designed to utilize the context provided by OAuth
    */
   @Bean(name = "githubFilter")
   public Filter ssoFilter(OAuth2ClientContext oauth2ClientContext) {
-    OAuth2ClientAuthenticationProcessingFilter githubFilter = new OAuth2ClientAuthenticationProcessingFilter("/login/github");
+    OAuth2ClientAuthenticationProcessingFilter githubFilter =
+        new OAuth2ClientAuthenticationProcessingFilter("/login/github");
     OAuth2RestTemplate githubTemplate = new OAuth2RestTemplate(github(), oauth2ClientContext);
     githubFilter.setRestTemplate(githubTemplate);
-    UserInfoTokenServices tokenServices = new UserInfoTokenServices(githubResource().getUserInfoUri(), github().getClientId());
+    UserInfoTokenServices tokenServices =
+        new UserInfoTokenServices(githubResource().getUserInfoUri(), github().getClientId());
     tokenServices.setRestTemplate(githubTemplate);
     tokenServices.setPrincipalExtractor(principalExtractor);
     githubFilter.setTokenServices(tokenServices);

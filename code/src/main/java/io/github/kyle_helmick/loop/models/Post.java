@@ -24,21 +24,18 @@ public class Post {
 
   private String content;
   private final String ownerId;
-  private final String groupId;
 
   /**
    * This is the constructor to make a Post.
    * @param content is the content of the post
    * @param ownerId is the id of the User object that is the owner of the post.
-   * @param groupId is the id (if needed) for the associated group to the post.
    */
-  public Post(String content, String ownerId, String groupId) {
+  public Post(String content, String ownerId) {
     this.id = UUID.randomUUID().toString();
     this.content = content;
     this.ownerId = ownerId;
     this.dateCreated = new Date();
     this.dateModified = this.dateCreated;
-    this.groupId = groupId;
   }
 
   public String getId() {
@@ -69,7 +66,31 @@ public class Post {
     return ownerId;
   }
 
-  public String getGroupId() {
-    return groupId;
+  public static class Builder {
+    private String content;
+    private String ownerId;
+
+    public Builder() {}
+
+    /**
+     * This function sets the content for the Post and cleans it just in case.
+     * @param content is the text for the content
+     * @return the updated instance of the builder
+     */
+    public Builder withContent(String content) {
+      content = content.replace("<", "&lt;");
+      content = content.replace(">", "&gt;");
+      this.content = content;
+      return this;
+    }
+
+    public Builder withOwnerId(String ownerId) {
+      this.ownerId = ownerId;
+      return this;
+    }
+
+    public Post build() {
+      return new Post(this.content, this.ownerId);
+    }
   }
 }
