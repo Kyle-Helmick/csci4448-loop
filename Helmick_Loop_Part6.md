@@ -39,9 +39,9 @@ Loop is a fake social media platform for developers. Users sign up with Github a
 
 ### 5.
 
-[Full Size](https://raw.githubusercontent.com/Kyle-Helmick/csci4448-loop/dev/class_diagrams/Package_loop_after.png)
+[Full Size](https://raw.githubusercontent.com/Kyle-Helmick/csci4448-loop/master/class_diagrams/Package_loop_after.png)
 
-![UML Diagram](https://raw.githubusercontent.com/Kyle-Helmick/csci4448-loop/dev/class_diagrams/Package_loop_after.png "UML Diagram")
+![UML Diagram](https://raw.githubusercontent.com/Kyle-Helmick/csci4448-loop/master/class_diagrams/Package_loop_after.png "UML Diagram")
 
 So basically the big difference is that the objects in the models package got bigger (@User) because I dropped the group functionality (overscoped...). I also added more controllers to help make the routing clearer and emphasize the seperation of the API and front facing routes.
 
@@ -49,13 +49,13 @@ Additionally, my commonly used classes all got builders of their own so the code
 
 ### 6.
 
-![Post](https://raw.githubusercontent.com/Kyle-Helmick/csci4448-loop/dev/class_diagrams/Post.png)
+![Post](https://raw.githubusercontent.com/Kyle-Helmick/csci4448-loop/master/class_diagrams/Post.png)
 
-![User](https://raw.githubusercontent.com/Kyle-Helmick/csci4448-loop/dev/class_diagrams/User.png)
+![User](https://raw.githubusercontent.com/Kyle-Helmick/csci4448-loop/master/class_diagrams/User.png)
 
-![Message](https://raw.githubusercontent.com/Kyle-Helmick/csci4448-loop/dev/class_diagrams/Message.png)
+![Message](https://raw.githubusercontent.com/Kyle-Helmick/csci4448-loop/master/class_diagrams/Message.png)
 
-![Builder UML](https://raw.githubusercontent.com/Kyle-Helmick/csci4448-loop/dev/class_diagrams/Builder_UML_class_diagram.png)
+![Builder UML](https://raw.githubusercontent.com/Kyle-Helmick/csci4448-loop/master/class_diagrams/Builder_UML_class_diagram.png)
 
 So to implement the design pattern I gave an inner class to each model object called Builder. Builder has custom methods to set the class variables for the class it's declared in and then a method to tie everything together and instantiate the appropriate object. I selected the design pattern because instantiating a new user can be ambiguous as follows:
 
